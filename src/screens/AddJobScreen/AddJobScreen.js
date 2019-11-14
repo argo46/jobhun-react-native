@@ -12,34 +12,47 @@ import {
 } from 'native-base';
 
 import style from './style';
+import {connect} from 'react-redux';
+import {addJob} from '../../redux/action/job';
 
-export default class AddJobScreen extends Component {
+class AddJobScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categorySelected: undefined,
-      companySelected: undefined,
+      name: '',
+      category: '',
+      salary: '',
+      location: '',
+      company: '',
+      description: '',
     };
   }
-  onCategorySelected(value) {
-    this.setState({
-      categorySelected: value,
-    });
-  }
-  onCompanySelected(value) {
-    this.setState({
-      companySelected: value,
-    });
-  }
+
+  onSumbit = () => {
+    let dataJob = {...this.state};
+
+    let token = this.props.user.token;
+    this.props.dispatch(addJob(dataJob, token));
+  };
 
   render() {
     return (
       <ScrollView>
+        {(function(props) {
+          if (props.job.isAddSuccess) {
+            props.navigation.navigate('JobScreen');
+          } else {
+            return <></>;
+          }
+        })(this.props)}
         <View style={style.rootContainer}>
           <Form style={style.form}>
             <Item floatingLabel style={style.formItem}>
               <Label>Job's Name</Label>
-              <Input />
+              <Input
+                onChangeText={text => this.setState({name: text})}
+                value={this.state.name}
+              />
             </Item>
             <Item picker style={style.pickerContainer}>
               <Picker
@@ -49,19 +62,26 @@ export default class AddJobScreen extends Component {
                 placeholder="Select your SIM"
                 placeholderStyle={{color: '#007aff'}}
                 placeholderIconColor="#007aff"
-                selectedValue={this.state.categorySelected}
-                onValueChange={this.onCategorySelected.bind(this)}>
-                <Picker.Item label="Information Technology" value="key0" />
-                <Picker.Item label="Marketing" value="key1" />
+                selectedValue={this.state.category}
+                onValueChange={value => this.setState({category: value})}>
+                <Picker.Item label="Information Technology" value="7" />
+                <Picker.Item label="Marketing" value="6" />
               </Picker>
             </Item>
             <Item floatingLabel style={style.formItem}>
               <Label>Salary</Label>
-              <Input keyboardType="numeric" />
+              <Input
+                keyboardType="numeric"
+                onChangeText={text => this.setState({salary: text})}
+                value={this.state.salary}
+              />
             </Item>
             <Item floatingLabel style={style.formItem}>
               <Label>Location</Label>
-              <Input />
+              <Input
+                onChangeText={text => this.setState({location: text})}
+                value={this.state.location}
+              />
             </Item>
             <Item picker style={style.pickerContainer}>
               <Picker
@@ -71,10 +91,11 @@ export default class AddJobScreen extends Component {
                 placeholder="Select your SIM"
                 placeholderStyle={{color: '#007aff'}}
                 placeholderIconColor="#007aff"
-                selectedValue={this.state.companySelected}
-                onValueChange={this.onCompanySelected.bind(this)}>
-                <Picker.Item label="Wallet" value="key0" />
-                <Picker.Item label="ATM Card" value="key1" />
+                selectedValue={this.state.company}
+                onValueChange={value => this.setState({company: value})}>
+                {this.props.company.data.map((e, key) => {
+                  return <Picker.Item key={key} label={e.name} value={e.id} />;
+                })}
               </Picker>
             </Item>
             <Item style={style.formItem}>
@@ -83,9 +104,10 @@ export default class AddJobScreen extends Component {
                 bordered
                 placeholder="Job's Description"
                 style={style.textArea}
+                onChangeText={text => this.setState({description: text})}
               />
             </Item>
-            <Button style={style.button}>
+            <Button style={style.button} onPress={this.onSumbit}>
               <Text style={style.buttonText}>SUBMIT</Text>
             </Button>
           </Form>
@@ -94,3 +116,11 @@ export default class AddJobScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  company: state.company,
+  user: state.user,
+  job: state.job,
+});
+
+export default connect(mapStateToProps)(AddJobScreen);

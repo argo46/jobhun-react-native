@@ -151,6 +151,7 @@ class JobScreen extends Component {
           <SideBar
             navigator={this.navigator}
             goToLoginScreen={this.goToLoginScreen}
+            properties={this.props}
           />
         }
         onClose={() => this.closeDrawer()}>

@@ -23,49 +23,63 @@ const SideBar = props => {
       <View style={style.bottmContainer}>
         <List>
           <ListItem>
-            <Icon
-              name="view-grid"
-              color="#6e6e6e"
-              size={25}
-              // style={}
-            />
-            <Text style={style.textListItem}>Jobs</Text>
+            <TouchableOpacity style={style.styleAbleOpacity}>
+              <Icon
+                name="view-grid"
+                color="#0984e3"
+                size={25}
+                // style={}
+              />
+              <Text style={style.textListItem}>Jobs</Text>
+            </TouchableOpacity>
           </ListItem>
           <ListItem>
-            <Icon
-              name="bookmark"
-              color="#6e6e6e"
-              size={25}
-              // style={}
-            />
-            <Text style={style.textListItem}>Saved Jobs</Text>
+            <TouchableOpacity
+              style={style.styleAbleOpacity}
+              onPress={() =>
+                props.properties.navigation.navigate('AddJobScreen')
+              }>
+              <Icon
+                name="briefcase-plus"
+                color="#6e6e6e"
+                size={25}
+                // style={}
+              />
+              <Text style={style.textListItem}>Add Job</Text>
+            </TouchableOpacity>
+          </ListItem>
+          <ListItem selected>
+            <TouchableOpacity style={style.styleAbleOpacity}>
+              <Icon
+                name="message-processing"
+                color="#6e6e6e"
+                size={25}
+                // style={}
+              />
+              <Text style={style.textListItem}>Messages</Text>
+            </TouchableOpacity>
           </ListItem>
           <ListItem>
-            <Icon
-              name="message-processing"
-              color="#6e6e6e"
-              size={25}
-              // style={}
-            />
-            <Text style={style.textListItem}>Messages</Text>
+            <TouchableOpacity style={style.styleAbleOpacity}>
+              <Icon
+                name="calendar"
+                color="#6e6e6e"
+                size={25}
+                // style={}
+              />
+              <Text style={style.textListItem}>Interview Schedule</Text>
+            </TouchableOpacity>
           </ListItem>
           <ListItem>
-            <Icon
-              name="calendar"
-              color="#6e6e6e"
-              size={25}
-              // style={}
-            />
-            <Text style={style.textListItem}>Interview Schedule</Text>
-          </ListItem>
-          <ListItem>
-            <Icon
-              name="account"
-              color="#6e6e6e"
-              size={25}
-              // style={}
-            />
-            <Text style={style.textListItem}>My Profile</Text>
+            <TouchableOpacity style={style.styleAbleOpacity}>
+              <Icon
+                name="account"
+                color="#6e6e6e"
+                size={25}
+                // style={}
+              />
+              <Text style={style.textListItem}>My Profile</Text>
+            </TouchableOpacity>
           </ListItem>
         </List>
         <TouchableOpacity
@@ -138,5 +152,10 @@ const style = StyleSheet.create({
     fontSize: 18,
     color: '#0984e3',
     marginLeft: 5,
+  },
+  styleAbleOpacity: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
