@@ -26,10 +26,9 @@ export default StyleSheet.create({
   },
   titleText: {
     fontWeight: 'bold',
-    alignSelf: 'center',
+    textAlign: 'left',
     fontSize: 14,
-    margin: 0,
-    padding: 0,
+    flexWrap: 'wrap',
   },
   categoryText: {
     textAlign: 'center',
@@ -52,7 +51,26 @@ export default StyleSheet.create({
   rightContainer: {
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
-    // backgroundColor: '#00f',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    flex: 1,
+  },
+  paginationContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  pickerItem: {
+    flex: 1,
+  },
+  paginationButton: {
+    flex: 3.5,
+    justifyContent: 'center',
+  },
+  buttonTextEnabled: {
+    color: 'black',
+  },
+  buttonTextDisabled: {
+    color: '#b5b5b5',
   },
 });

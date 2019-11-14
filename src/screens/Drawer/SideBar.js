@@ -1,9 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {List, ListItem} from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const SideBar = () => {
+import {connect} from 'react-redux';
+import {logout} from '../../redux/action/user';
+
+const SideBar = props => {
   return (
     <View style={style.rootContainer}>
       <View style={style.upperContainer}>
@@ -14,7 +17,7 @@ const SideBar = () => {
             size={40}
             style={style.avatarIcon}
           />
-          <Text style={style.textAvatar}>Argo</Text>
+          <Text style={style.textAvatar}>{props.user.username}</Text>
         </View>
       </View>
       <View style={style.bottmContainer}>
@@ -65,21 +68,27 @@ const SideBar = () => {
             <Text style={style.textListItem}>My Profile</Text>
           </ListItem>
         </List>
-        <View style={style.logoutContainer}>
-          <Icon
-            name="logout-variant"
-            color="#0984e3"
-            size={25}
-            // style={}
-          />
-          <Text style={style.logoutText}>Log Out</Text>
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            props.dispatch(logout());
+            props.goToLoginScreen();
+          }}
+          style={style.logoutContainer}>
+          <View style={style.logoutContainer}>
+            <Icon name="logout-variant" color="#0984e3" size={25} />
+            <Text style={style.logoutText}>Log Out</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default SideBar;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(SideBar);
 
 const style = StyleSheet.create({
   rootContainer: {

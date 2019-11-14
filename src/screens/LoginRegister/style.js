@@ -1,11 +1,18 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  wrapper: {
-    flex: 1,
+  root: {
+    height: '100%',
     flexDirection: 'column',
-    // alignContent: 'flex-end',
+    display: 'flex',
+  },
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
     padding: 12,
+    height: '100%',
+    alignContent: 'flex-end',
   },
   titleText: {
     fontSize: 40,
@@ -15,17 +22,17 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   form: {
-    // flexGrow: 1,
     marginTop: 50,
     marginRight: 5,
     marginBottom: 'auto',
   },
   bottomWrapper: {
-    flexGrow: 1,
-    height: 'auto',
     marginTop: 'auto',
+    paddingBottom: 30,
   },
   regisInfoText: {
+    marginBottom: 30,
+    textAlign: 'center',
   },
   button: {
     backgroundColor: '#0984e3',
@@ -34,5 +41,15 @@ export default StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 18,
+  },
+  linkText: {
+    color: '#0984e3',
+    fontWeight: 'bold',
+  },
+  infoTextWrapper: {
+    marginTop: 60,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
