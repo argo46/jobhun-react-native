@@ -16,6 +16,8 @@ import {connect} from 'react-redux';
 import {getJobs} from '../../redux/action/job';
 import {getCompanies} from '../../redux/action/company';
 
+import {NavigationEvents} from 'react-navigation';
+
 class JobScreen extends Component {
   static navigationOptions = ({navigation}) => {
     return {
@@ -53,7 +55,7 @@ class JobScreen extends Component {
     //   style: style.drawerMenu,
     // });
     // this.openDrawer();
-    this.getData();
+    // this.getData();
     if (this.props.company.data.length < 1) {
       this.props.dispatch(getCompanies());
     }
@@ -174,6 +176,7 @@ class JobScreen extends Component {
           onFilterSubmit={this.onFilterSubmit}
           companies={this.props.company.data}
         />
+        <NavigationEvents onDidFocus={() => this.getData()} />
         <View style={style.wrapper}>
           <ScrollView>
             {!this.props.job.isLoading && !this.props.job.isError ? (

@@ -11,6 +11,7 @@ import Loginscreen from './screens/LoginRegister/LogInScreen';
 import RegisterScreen from './screens/LoginRegister/RegisterScreen';
 import AddJobScreen from './screens/AddJobScreen/AddJobScreen';
 import AddCompanyScreen from './screens/AddCompany/AddCompany';
+import UpdateJobScreen from './screens/UpdateJob/UpdateJobScreen';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import {keepLogin} from './redux/action/user';
@@ -41,6 +42,7 @@ const stackNavigation = createStackNavigator({
   Loginscreen,
   JobScreen,
   AddCompanyScreen,
+  UpdateJobScreen,
   AddJobScreen,
   RegisterScreen,
   JobDetailScreen,

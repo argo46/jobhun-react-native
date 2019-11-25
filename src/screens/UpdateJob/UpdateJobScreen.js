@@ -13,39 +13,40 @@ import {
 
 import style from './style';
 import {connect} from 'react-redux';
-import {addJob, getJobs} from '../../redux/action/job';
+import {updateJob} from '../../redux/action/job';
+import qs from 'qs';
 
-class AddJobScreen extends Component {
+class UpdateJobScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      category: '7',
-      salary: '',
-      location: '',
-      company: '',
-      description: '',
-    };
+    this.state = {...this.props.navigation.state.params};
+    console.log(this.state);
   }
 
-  onSumbit = () => {
-    let dataJob = {...this.state};
+  onUpdate = () => {
+    let dataJob = {
+      name: this.state.name,
+      salary: this.state.salary,
+      location: this.state.location,
+      company: this.state.company_id,
+      description: this.state.description,
+    };
 
     let token = this.props.user.token;
-    this.props.dispatch(addJob(dataJob, token));
+    this.props.dispatch(updateJob(this.state.id, dataJob, token));
     this.props.navigation.navigate('JobScreen');
   };
 
   render() {
     return (
       <ScrollView>
-        {/* {(function(props) {
-          if (props.job.isAddSuccess) {
+        {(function(props) {
+          if (props.job.isUpdateSuccess) {
             props.navigation.navigate('JobScreen');
           } else {
             return <></>;
           }
-        })(this.props)} */}
+        })(this.props)}
         <View style={style.rootContainer}>
           <Form style={style.form}>
             <Item floatingLabel style={style.formItem}>
@@ -74,7 +75,7 @@ class AddJobScreen extends Component {
               <Input
                 keyboardType="numeric"
                 onChangeText={text => this.setState({salary: text})}
-                value={this.state.salary}
+                value={this.state.salary.toString()}
               />
             </Item>
             <Item floatingLabel style={style.formItem}>
@@ -92,7 +93,7 @@ class AddJobScreen extends Component {
                 placeholder="Select your SIM"
                 placeholderStyle={{color: '#007aff'}}
                 placeholderIconColor="#007aff"
-                selectedValue={this.state.company}
+                selectedValue={this.state.company_id}
                 onValueChange={value => this.setState({company: value})}>
                 {this.props.company.data.map((e, key) => {
                   return <Picker.Item key={key} label={e.name} value={e.id} />;
@@ -105,11 +106,12 @@ class AddJobScreen extends Component {
                 bordered
                 placeholder="Job's Description"
                 style={style.textArea}
+                value={this.state.description}
                 onChangeText={text => this.setState({description: text})}
               />
             </Item>
-            <Button style={style.button} onPress={this.onSumbit}>
-              <Text style={style.buttonText}>SUBMIT</Text>
+            <Button style={style.button} onPress={this.onUpdate}>
+              <Text style={style.buttonText}>UPDATE</Text>
             </Button>
           </Form>
         </View>
@@ -124,4 +126,4 @@ const mapStateToProps = state => ({
   job: state.job,
 });
 
-export default connect(mapStateToProps)(AddJobScreen);
+export default connect(mapStateToProps)(UpdateJobScreen);

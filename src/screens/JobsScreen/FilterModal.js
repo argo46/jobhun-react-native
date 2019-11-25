@@ -48,10 +48,7 @@ export default class FilterModal extends Component {
       <Modal
         animationType="fade"
         transparent={true}
-        visible={this.props.visibility}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}>
+        visible={this.props.visibility}>
         <View style={style.root}>
           <Card style={style.container}>
             <Text style={style.titleText}>Search Filter</Text>

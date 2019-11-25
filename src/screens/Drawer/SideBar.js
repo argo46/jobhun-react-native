@@ -51,12 +51,12 @@ const SideBar = props => {
           <ListItem selected>
             <TouchableOpacity style={style.styleAbleOpacity}>
               <Icon
-                name="message-processing"
+                name="domain"
                 color="#6e6e6e"
                 size={25}
                 // style={}
               />
-              <Text style={style.textListItem}>Messages</Text>
+              <Text style={style.textListItem}>Add Company</Text>
             </TouchableOpacity>
           </ListItem>
           <ListItem>
