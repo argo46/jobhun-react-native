@@ -65,7 +65,7 @@ class RegisterScreen extends Component {
             return <></>;
           }
           if (props.user.isLogin) {
-            props.navigation.navigate('JobScreen');
+            props.navigation.navigate('appStack');
           }
         })(this.props)}
         <View style={style.wrapper}>

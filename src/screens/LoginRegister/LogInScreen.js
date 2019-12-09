@@ -48,7 +48,7 @@ class LogInScreen extends Component {
       <ScrollView contentContainerStyle={style.root}>
         {(function(props) {
           if (props.user.isLogin) {
-            props.navigation.navigate('JobScreen');
+            props.navigation.navigate('appStack');
           } else {
             return <></>;
           }
@@ -79,9 +79,7 @@ class LogInScreen extends Component {
             <View style={style.infoTextWrapper}>
               <Text style={style.regisInfoText}>Don't have an account? </Text>
               <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate('RegisterScreen')
-                }>
+                onPress={() => this.props.navigation.navigate('appStack')}>
                 <Text style={style.linkText}>Register now!</Text>
               </TouchableOpacity>
             </View>

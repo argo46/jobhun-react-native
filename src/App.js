@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import {Provider} from 'react-redux';
@@ -38,14 +38,27 @@ export default class App extends Component {
   }
 }
 
-const stackNavigation = createStackNavigator({
-  Loginscreen,
+const appStack = createStackNavigator({
   JobScreen,
   AddCompanyScreen,
   UpdateJobScreen,
   AddJobScreen,
-  RegisterScreen,
   JobDetailScreen,
 });
 
-const AppContainer = createAppContainer(stackNavigation);
+const authStack = createStackNavigator({
+  Loginscreen,
+  RegisterScreen,
+});
+
+const AppContainer = createAppContainer(
+  createSwitchNavigator(
+    {
+      appStack,
+      authStack,
+    },
+    {
+      initialRouteName: 'appStack',
+    },
+  ),
+);
