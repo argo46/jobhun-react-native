@@ -12,6 +12,7 @@ import RegisterScreen from './screens/LoginRegister/RegisterScreen';
 import AddJobScreen from './screens/AddJobScreen/AddJobScreen';
 import AddCompanyScreen from './screens/AddCompany/AddCompany';
 import UpdateJobScreen from './screens/UpdateJob/UpdateJobScreen';
+import CompaniesScreen from './screens/CompaniesScreen/CompaniesScreen';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import {keepLogin} from './redux/action/user';
@@ -44,6 +45,7 @@ const appStack = createStackNavigator({
   UpdateJobScreen,
   AddJobScreen,
   JobDetailScreen,
+  CompaniesScreen,
 });
 
 const authStack = createStackNavigator({

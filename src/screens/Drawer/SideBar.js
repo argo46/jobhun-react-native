@@ -54,7 +54,8 @@ const SideBar = props => {
               style={style.styleAbleOpacity}
               onPress={() => {
                 props.closeDrawer();
-                props.properties.navigation.navigate('AddCompanyScreen');
+                // props.properties.navigation.navigate('AddCompanyScreen');
+                props.properties.navigation.navigate('CompaniesScreen');
               }}>
               <Icon
                 name="domain"
