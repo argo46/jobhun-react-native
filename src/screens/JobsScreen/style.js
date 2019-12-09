@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   card: {
     flex: 1,
-    borderRadius: 20,
+    borderRadius: 5,
   },
   drawerMenu: {
     marginLeft: 12,
@@ -46,7 +46,6 @@ export default StyleSheet.create({
     textAlign: 'left',
     marginLeft: 10,
     textTransform: 'capitalize',
-    // backgroundColor: '#f00',
   },
   rightContainer: {
     display: 'flex',

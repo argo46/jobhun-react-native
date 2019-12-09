@@ -5,6 +5,7 @@ const initialState = {
   errorMessage: '',
   isAddSuccess: false,
   isUpdateSuccess: false,
+  lastUpdateState: '',
 };
 
 const jobs = (state = initialState, action) => {
@@ -27,6 +28,7 @@ const jobs = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         data: action.payload.data,
+        lastUpdateState: new Date(Date.now()),
       };
     case 'ADD_JOB_PENDING':
       return {

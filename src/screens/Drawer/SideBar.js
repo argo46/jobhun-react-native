@@ -36,9 +36,10 @@ const SideBar = props => {
           <ListItem>
             <TouchableOpacity
               style={style.styleAbleOpacity}
-              onPress={() =>
-                props.properties.navigation.navigate('AddJobScreen')
-              }>
+              onPress={() => {
+                props.closeDrawer();
+                props.properties.navigation.navigate('AddJobScreen');
+              }}>
               <Icon
                 name="briefcase-plus"
                 color="#6e6e6e"
@@ -49,7 +50,12 @@ const SideBar = props => {
             </TouchableOpacity>
           </ListItem>
           <ListItem selected>
-            <TouchableOpacity style={style.styleAbleOpacity}>
+            <TouchableOpacity
+              style={style.styleAbleOpacity}
+              onPress={() => {
+                props.closeDrawer();
+                props.properties.navigation.navigate('AddCompanyScreen');
+              }}>
               <Icon
                 name="domain"
                 color="#6e6e6e"
@@ -84,6 +90,7 @@ const SideBar = props => {
         </List>
         <TouchableOpacity
           onPress={() => {
+            // props.closeDrawer();
             props.dispatch(logout());
             props.goToLoginScreen();
           }}

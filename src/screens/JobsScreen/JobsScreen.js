@@ -42,6 +42,7 @@ class JobScreen extends Component {
         orderby: 'date_updated',
         order: 'asc',
       },
+      lastUpdated: '',
       page: '1',
       isDrawerOpen: false,
       isSearch: false,
@@ -56,6 +57,12 @@ class JobScreen extends Component {
     // });
     // this.openDrawer();
     // this.getData();
+    if (
+      this.state.lastUpdated === '' ||
+      this.state.lastUpdated !== this.props.job.lastUpdateState
+    ) {
+      this.getData();
+    }
     if (this.props.company.data.length < 1) {
       this.props.dispatch(getCompanies());
     }
@@ -103,7 +110,9 @@ class JobScreen extends Component {
   };
 
   onSearchSubmit = () => {
-    this.getData();
+    this.getData().then(() =>
+      this.setState({lastUpdated: this.props.job.data.lastUpdateState}),
+    );
   };
 
   onPaginationButtonClicked = (url, nextOrPrev) => {
@@ -154,6 +163,7 @@ class JobScreen extends Component {
             navigator={this.navigator}
             goToLoginScreen={this.goToLoginScreen}
             properties={this.props}
+            closeDrawer={this.toogleDrawer}
           />
         }
         onClose={() => this.closeDrawer()}>
@@ -176,7 +186,7 @@ class JobScreen extends Component {
           onFilterSubmit={this.onFilterSubmit}
           companies={this.props.company.data}
         />
-        <NavigationEvents onDidFocus={() => this.getData()} />
+        {/* <NavigationEvents onWillFocus={() => this.getData()} /> */}
         <View style={style.wrapper}>
           <ScrollView>
             {!this.props.job.isLoading && !this.props.job.isError ? (
