@@ -2,6 +2,7 @@ const initialState = {
   isLoading: true,
   isError: false,
   data: [],
+  newData: false,
 };
 
 const companies = (state = initialState, action) => {
@@ -22,7 +23,26 @@ const companies = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
+        newData: false,
         data: action.payload.data,
+      };
+    case 'ADD_COMPANY_PENDING':
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case 'ADD_COMPANY_REJECTED':
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    case 'ADD_COMPANY_FULFILLED':
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        newData: true,
       };
     default:
       return state;

@@ -16,6 +16,11 @@ import {connect} from 'react-redux';
 import {addJob, getJobs} from '../../redux/action/job';
 
 class AddJobScreen extends Component {
+  static navigationOptions = () => {
+    return {
+      title: 'Add Job',
+    };
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -89,7 +94,6 @@ class AddJobScreen extends Component {
                 mode="dropdown"
                 iosIcon={<Icon name="arrow-down" />}
                 style={style.picker}
-                placeholder="Select your SIM"
                 placeholderStyle={{color: '#007aff'}}
                 placeholderIconColor="#007aff"
                 selectedValue={this.state.company}

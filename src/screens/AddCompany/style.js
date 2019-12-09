@@ -34,6 +34,20 @@ export default StyleSheet.create({
     flexGrow: 1,
     alignSelf: 'stretch',
   },
+  imageUpload: {
+    flex: 1,
+    height: 150,
+    marginLeft: 14,
+    backgroundColor: '#d4d4d4',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imagePhoto: {
+    flex: 1,
+    height: 150,
+    marginLeft: 14,
+    resizeMode: 'contain',
+  },
   button: {
     backgroundColor: '#0984e3',
     justifyContent: 'center',
