@@ -35,7 +35,7 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
   },
   button: {
-    backgroundColor: '#0984e3',
+    backgroundColor: '#0760a6',
     justifyContent: 'center',
   },
   buttonText: {

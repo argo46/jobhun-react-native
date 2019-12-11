@@ -49,7 +49,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   button: {
-    backgroundColor: '#0984e3',
+    backgroundColor: '#0760a6',
     justifyContent: 'center',
   },
   buttonText: {

@@ -2,11 +2,10 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
 import {Header, Left, Button, Icon, Body, Title, Right} from 'native-base';
-import IconMat from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const HeaderComponent = props => {
   return (
-    <Header>
+    <Header style={{backgroundColor: '#0760a6'}}>
       <Left>
         <Button transparent>
           <TouchableOpacity onPress={props.toogleDrawer}>

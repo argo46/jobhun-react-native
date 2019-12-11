@@ -14,12 +14,21 @@ export default StyleSheet.create({
     height: '100%',
     alignContent: 'flex-end',
   },
+  headerContainer: {
+    backgroundColor: '#0760a6',
+    marginTop: -12,
+    marginHorizontal: -12,
+    paddingHorizontal: 12,
+    paddingBottom: 15,
+  },
   titleText: {
     fontSize: 40,
+    color: '#fff',
   },
   titleBold: {
     fontSize: 40,
     fontWeight: 'bold',
+    color: '#fff',
   },
   form: {
     marginTop: 50,
@@ -35,7 +44,7 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    backgroundColor: '#0984e3',
+    backgroundColor: '#0760a6',
     justifyContent: 'center',
   },
   buttonText: {

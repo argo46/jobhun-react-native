@@ -9,6 +9,12 @@ import style from './style';
 import {connect} from 'react-redux';
 
 class CompaniesScreen extends Component {
+  static navigationOptions = () => {
+    return {
+      title: 'Companies List',
+      backgroundColor: '#0760a6',
+    };
+  };
   render() {
     return (
       <View style={style.wrapper}>
@@ -27,10 +33,7 @@ class CompaniesScreen extends Component {
                     <Image
                       style={style.companyImage}
                       source={{
-                        uri:
-                          BASE_URL +
-                          '' +
-                          company.logo.slice(22, company.logo.lenght),
+                        uri: company.logo,
                       }}
                     />
                     <View style={style.rightContainer}>

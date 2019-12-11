@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import {Form, Item, Input, Label, Button} from 'native-base';
 
 import style from './style';
@@ -25,6 +31,7 @@ class RegisterScreen extends Component {
     headerStyle: {
       shadowOpacity: 0,
       elevation: 0,
+      backgroundColor: '#0760a6',
     },
   };
 
@@ -58,6 +65,7 @@ class RegisterScreen extends Component {
   render() {
     return (
       <ScrollView>
+        <StatusBar backgroundColor="#0760a6" barStyle="light-content" />
         {(function(props) {
           if (props.user.isRegistrationSucces) {
             props.navigation.navigate('Loginscreen');
@@ -69,8 +77,10 @@ class RegisterScreen extends Component {
           }
         })(this.props)}
         <View style={style.wrapper}>
-          <Text style={style.titleText}>Welcome,</Text>
-          <Text style={style.titleBold}>New Hunter</Text>
+          <View style={style.headerContainer}>
+            <Text style={style.titleText}>Welcome,</Text>
+            <Text style={style.titleBold}>New Hunter</Text>
+          </View>
           <Form style={style.form}>
             <Item floatingLabel style={style.formItem}>
               <Label>Email</Label>

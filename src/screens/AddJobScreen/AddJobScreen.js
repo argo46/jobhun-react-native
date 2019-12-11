@@ -9,16 +9,18 @@ import {
   Icon,
   Textarea,
   Button,
+  Spinner,
 } from 'native-base';
 
 import style from './style';
 import {connect} from 'react-redux';
-import {addJob, getJobs} from '../../redux/action/job';
+import {addJob} from '../../redux/action/job';
 
 class AddJobScreen extends Component {
   static navigationOptions = () => {
     return {
       title: 'Add Job',
+      backgroundColor: '#0760a6',
     };
   };
   constructor(props) {
@@ -37,8 +39,9 @@ class AddJobScreen extends Component {
     let dataJob = {...this.state};
 
     let token = this.props.user.token;
-    this.props.dispatch(addJob(dataJob, token));
-    this.props.navigation.navigate('JobScreen');
+    this.props.dispatch(addJob(dataJob, token)).then(() => {
+      this.props.navigation.navigate('JobScreen');
+    });
   };
 
   render() {
@@ -66,8 +69,8 @@ class AddJobScreen extends Component {
                 iosIcon={<Icon name="arrow-down" />}
                 style={style.picker}
                 placeholder="Select your SIM"
-                placeholderStyle={{color: '#007aff'}}
-                placeholderIconColor="#007aff"
+                placeholderStyle={{color: '#0760a6'}}
+                placeholderIconColor="#0760a6"
                 selectedValue={this.state.category}
                 onValueChange={value => this.setState({category: value})}>
                 <Picker.Item label="Information Technology" value="7" />
@@ -94,8 +97,8 @@ class AddJobScreen extends Component {
                 mode="dropdown"
                 iosIcon={<Icon name="arrow-down" />}
                 style={style.picker}
-                placeholderStyle={{color: '#007aff'}}
-                placeholderIconColor="#007aff"
+                placeholderStyle={{color: '#0760a6'}}
+                placeholderIconColor="#0760a6"
                 selectedValue={this.state.company}
                 onValueChange={value => this.setState({company: value})}>
                 {this.props.company.data.map((e, key) => {
@@ -112,9 +115,13 @@ class AddJobScreen extends Component {
                 onChangeText={text => this.setState({description: text})}
               />
             </Item>
-            <Button style={style.button} onPress={this.onSumbit}>
-              <Text style={style.buttonText}>SUBMIT</Text>
-            </Button>
+            {this.props.job.isLoading ? (
+              <Spinner color="#0760a6" />
+            ) : (
+              <Button style={style.button} onPress={this.onSumbit}>
+                <Text style={style.buttonText}>SUBMIT</Text>
+              </Button>
+            )}
           </Form>
         </View>
       </ScrollView>

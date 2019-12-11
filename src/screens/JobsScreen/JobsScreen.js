@@ -3,7 +3,14 @@ import qs from 'qs';
 import {Card, Drawer, Button, Picker, Icon, Item} from 'native-base';
 import IconMat from 'react-native-vector-icons/MaterialCommunityIcons';
 import {BASE_URL} from 'react-native-dotenv';
-import {Text, View, ScrollView, TouchableOpacity, Image} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  StatusBar,
+} from 'react-native';
 
 import SideBar from '../Drawer/SideBar';
 import HeaderComponent from './HeaderComponent';
@@ -15,8 +22,6 @@ import style from './style';
 import {connect} from 'react-redux';
 import {getJobs} from '../../redux/action/job';
 import {getCompanies} from '../../redux/action/company';
-
-import {NavigationEvents} from 'react-navigation';
 
 class JobScreen extends Component {
   static navigationOptions = ({navigation}) => {
@@ -180,6 +185,7 @@ class JobScreen extends Component {
             toogleIsSearch={this.toogleIsSearch}
           />
         )}
+        <StatusBar backgroundColor="#003777" barStyle="light-content" />
         <FilterModal
           visibility={this.state.modalVisible}
           toogleModal={this.toogleModal}
@@ -204,10 +210,7 @@ class JobScreen extends Component {
                       <Image
                         style={style.jobImage}
                         source={{
-                          uri:
-                            BASE_URL +
-                            '' +
-                            job.company_logo.slice(22, job.company_logo.lenght),
+                          uri: job.company_logo,
                         }}
                       />
                       <View style={style.rightContainer}>
@@ -218,7 +221,7 @@ class JobScreen extends Component {
                         <View style={style.textInfoContainer}>
                           <IconMat
                             name="map-marker"
-                            color="#0984e3"
+                            color="#0760a6"
                             size={20}
                           />
                           <Text style={style.jobInfoText}>{job.location}</Text>
@@ -226,7 +229,7 @@ class JobScreen extends Component {
                         <View style={style.textInfoContainer}>
                           <IconMat
                             name="cash-multiple"
-                            color="#0984e3"
+                            color="#0760a6"
                             size={20}
                           />
                           <Text style={style.jobInfoText}>{job.salary}</Text>

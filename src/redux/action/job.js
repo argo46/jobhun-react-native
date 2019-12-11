@@ -1,9 +1,9 @@
 import axios from 'axios';
-import {BASE_URL} from 'react-native-dotenv';
 import qs from 'qs';
+import {config} from '../../configs/configs';
 
 export const getJobs = query => {
-  let url = 'http://localhost:3000/job/jobs/?' + query;
+  let url = config.BASE_URL + '/job/jobs/?' + query;
   console.log(url);
   return {
     type: 'GET_JOBS',
@@ -16,7 +16,7 @@ export const addJob = (jobData, token) => {
     type: 'ADD_JOB',
     payload: axios({
       method: 'POST',
-      url: 'http://localhost:3000/job',
+      url: config.BASE_URL + '/job',
       data: qs.stringify(jobData),
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -32,7 +32,7 @@ export const updateJob = (id, dataJob, token) => {
     idJob: id,
     payload: axios({
       method: 'PATCH',
-      url: 'http://localhost:3000/job/' + id,
+      url: config.BASE_URL + '/job/' + id,
       data: qs.stringify(dataJob),
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -47,7 +47,7 @@ export const deleteJob = (id, token) => {
     type: 'DELETE_JOB',
     payload: axios({
       method: 'DELETE',
-      url: 'http://localhost:3000/job/' + id,
+      url: config.BASE_URL + '/job/' + id,
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
         authorization: 'Bearer ' + String(token),

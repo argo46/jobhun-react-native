@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import IconMat from 'react-native-vector-icons/MaterialCommunityIcons';
+import {config} from '../../configs/configs';
 
 // this.props.navigation.getParam('name', '')
 import style from './style';
@@ -26,7 +27,7 @@ class JobDetailScreen extends Component {
           <TouchableOpacity
             style={{marginRight: 20}}
             onPress={navigation.getParam('updateJob')}>
-            <IconMat name="briefcase-edit" color="#0984e3" size={30} />
+            <IconMat name="briefcase-edit" color="#0760a6" size={30} />
           </TouchableOpacity>
         </View>
       ),

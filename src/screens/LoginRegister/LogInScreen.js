@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import {Form, Item, Input, Label, Button, Spinner} from 'native-base';
 
 import style from './style';
@@ -23,6 +29,7 @@ class LogInScreen extends Component {
     headerStyle: {
       shadowOpacity: 0,
       elevation: 0,
+      backgroundColor: '#0760a6',
     },
   };
 
@@ -46,6 +53,7 @@ class LogInScreen extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={style.root}>
+        <StatusBar backgroundColor="#0760a6" barStyle="light-content" />
         {(function(props) {
           if (props.user.isLogin) {
             props.navigation.navigate('appStack');
@@ -54,8 +62,10 @@ class LogInScreen extends Component {
           }
         })(this.props)}
         <View style={style.wrapper}>
-          <Text style={style.titleText}>Welcome Back,</Text>
-          <Text style={style.titleBold}>Hunter</Text>
+          <View style={style.headerContainer}>
+            <Text style={style.titleText}>Welcome Back,</Text>
+            <Text style={style.titleBold}>Hunter</Text>
+          </View>
           <Form style={style.form}>
             <Item floatingLabel style={style.formItem}>
               <Label>Email</Label>
@@ -75,11 +85,13 @@ class LogInScreen extends Component {
             </Item>
           </Form>
           <View style={style.bottomWrapper}>
-            {this.props.user.isLoading ? <Spinner color="#0984e3" /> : <></>}
+            {this.props.user.isLoading ? <Spinner color="#0760a6" /> : <></>}
             <View style={style.infoTextWrapper}>
               <Text style={style.regisInfoText}>Don't have an account? </Text>
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('appStack')}>
+                onPress={() =>
+                  this.props.navigation.navigate('RegisterScreen')
+                }>
                 <Text style={style.linkText}>Register now!</Text>
               </TouchableOpacity>
             </View>

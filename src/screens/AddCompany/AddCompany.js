@@ -10,6 +10,12 @@ import {addCompany, getCompanies} from '../../redux/action/company';
 import style from './style';
 
 class AddCompany extends Component {
+  static navigationOptions = () => {
+    return {
+      title: 'Add Company',
+      backgroundColor: '#0760a6',
+    };
+  };
   constructor(props) {
     super(props);
     this.state = {

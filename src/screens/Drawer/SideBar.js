@@ -26,7 +26,7 @@ const SideBar = props => {
             <TouchableOpacity style={style.styleAbleOpacity}>
               <Icon
                 name="view-grid"
-                color="#0984e3"
+                color="#0760a6"
                 size={25}
                 // style={}
               />
@@ -97,7 +97,7 @@ const SideBar = props => {
           }}
           style={style.logoutContainer}>
           <View style={style.logoutContainer}>
-            <Icon name="logout-variant" color="#0984e3" size={25} />
+            <Icon name="logout-variant" color="#0760a6" size={25} />
             <Text style={style.logoutText}>Log Out</Text>
           </View>
         </TouchableOpacity>
@@ -119,7 +119,7 @@ const style = StyleSheet.create({
   upperContainer: {
     padding: 12,
     minHeight: 150,
-    backgroundColor: '#0984e3',
+    backgroundColor: '#0760a6',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
@@ -158,7 +158,7 @@ const style = StyleSheet.create({
   },
   logoutText: {
     fontSize: 18,
-    color: '#0984e3',
+    color: '#0760a6',
     marginLeft: 5,
   },
   styleAbleOpacity: {
