@@ -54,7 +54,6 @@ const SideBar = props => {
               style={style.styleAbleOpacity}
               onPress={() => {
                 props.closeDrawer();
-                // props.properties.navigation.navigate('AddCompanyScreen');
                 props.properties.navigation.navigate('CompaniesScreen');
               }}>
               <Icon
@@ -63,18 +62,23 @@ const SideBar = props => {
                 size={25}
                 // style={}
               />
-              <Text style={style.textListItem}>Add Company</Text>
+              <Text style={style.textListItem}>Companies List</Text>
             </TouchableOpacity>
           </ListItem>
           <ListItem>
-            <TouchableOpacity style={style.styleAbleOpacity}>
+            <TouchableOpacity
+              style={style.styleAbleOpacity}
+              onPress={() => {
+                props.closeDrawer();
+                props.properties.navigation.navigate('AddCompanyScreen');
+              }}>
               <Icon
-                name="calendar"
+                name="table-plus"
                 color="#6e6e6e"
                 size={25}
                 // style={}
               />
-              <Text style={style.textListItem}>Interview Schedule</Text>
+              <Text style={style.textListItem}>Add Company</Text>
             </TouchableOpacity>
           </ListItem>
           <ListItem>

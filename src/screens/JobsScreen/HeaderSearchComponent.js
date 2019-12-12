@@ -1,24 +1,15 @@
 import React from 'react';
 import {View} from 'react-native';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, StatusBar} from 'react-native';
 import {StyleSheet} from 'react-native';
 
-import {
-  Header,
-  Left,
-  Button,
-  Icon,
-  Body,
-  Title,
-  Right,
-  Item,
-  Input,
-} from 'native-base';
+import {Header, Left, Button, Icon, Right, Item, Input} from 'native-base';
 import IconMat from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const HeaderSearchComponent = props => {
   return (
     <Header style={style.root}>
+      <StatusBar backgroundColor="#003777" barStyle="light-content" />
       <Left>
         <Button transparent>
           <TouchableOpacity onPress={props.toogleIsSearch}>
@@ -53,6 +44,7 @@ const style = StyleSheet.create({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#0760a6',
   },
   searchContainer: {
     backgroundColor: '#fff',

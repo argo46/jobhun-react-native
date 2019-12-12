@@ -19,9 +19,9 @@ class AddCompany extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'dgdsfg',
-      location: 'dsf',
-      description: 'sdfg',
+      name: '',
+      location: '',
+      description: '',
       logo: '',
     };
   }
@@ -83,6 +83,9 @@ class AddCompany extends Component {
                 value={this.state.location}
               />
             </Item>
+            <Label style={{marginLeft: 15, color: 'grey', marginBottom: -10}}>
+              Company Logo
+            </Label>
             <TouchableOpacity onPress={this.choosePhoto}>
               {this.state.logo ? (
                 <Image

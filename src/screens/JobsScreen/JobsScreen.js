@@ -75,10 +75,18 @@ class JobScreen extends Component {
 
   getData = query => {
     if (query === undefined) {
-      this.props.dispatch(getJobs(qs.stringify(this.state.query)));
+      this.props
+        .dispatch(getJobs(qs.stringify(this.state.query)))
+        .then(() =>
+          this.setState({lastUpdated: this.props.job.data.lastUpdateState}),
+        );
       console.log(query);
     } else {
-      this.props.dispatch(getJobs(query.toString()));
+      this.props
+        .dispatch(getJobs(query.toString()))
+        .then(() =>
+          this.setState({lastUpdated: this.props.job.data.lastUpdateState}),
+        );
       console.log(query);
     }
     console.log(this.props);
@@ -115,9 +123,7 @@ class JobScreen extends Component {
   };
 
   onSearchSubmit = () => {
-    this.getData().then(() =>
-      this.setState({lastUpdated: this.props.job.data.lastUpdateState}),
-    );
+    this.getData();
   };
 
   onPaginationButtonClicked = (url, nextOrPrev) => {
